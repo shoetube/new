@@ -1,5 +1,12 @@
 #!/usr/bin/python3.5
 #to give permission, enter: chmod -v +x [filename]
+
+######################################################################
+# This program takes an XML file and converts it to a list of
+# dictionaries.  
+# 
+# 
+######################################################################
 deleteHead = 22
 deleteTail = 3
 
@@ -84,23 +91,19 @@ for i in range(len(l)):
       continue
     j+=1
 
-list = []
+aList = []
 for i in range(len(l)):
-  list.append({})
+  aList.append({})
   for j in range(len(l[i])):
-    list[i].update({l[i][j][0]:l[i][j][1]})
+    aList[i].update({l[i][j][0]:l[i][j][1]})
 
-
-"""
 # Contents of output
 oString = ''
-for i in l:
-  for j in i:
-    for k in j:
-      oString += k +'\n'
+for i in aList:
+  if i['my status'] == 'Completed':
+    oString += i['series title'] +' '*(60 - len(i['series title'])) + i['my score'] +'\n'
 
 # Outputs results to file
 outputFile = open('output.txt', 'w')
 outputFile.write(oString)
 outputFile.close()
-"""
